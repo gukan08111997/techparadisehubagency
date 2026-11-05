@@ -4,11 +4,12 @@ Open `index.html` in a browser. No build step is needed. Host the whole folder o
 
 ## Edit these before you publish
 
-1. **`js/site-data.js`**: WhatsApp, phone, email, Instagram, Facebook and Telegram links, the three student numbers (trained, enrolled, enrolling), mentors and testimonials. Every value in it is a placeholder or sample.
-2. **Contact form**: in `contact.html` and in the drawer on every page, replace `YOUR_WEB3FORMS_ACCESS_KEY` with your free key from web3forms.com. Submissions are emailed to the address you register.
-3. **`pricing.html`** (and "from" prices on `index.html`, `courses.html`, `crash-courses.html`): the prices are sample figures.
-4. **`contact.html`**: address and office hours.
-5. **Domain**: search all files for `YOUR-DOMAIN.com` and replace it with your domain.
+1. **`js/site-data.js`**: contact details (WhatsApp, phone, email, Instagram, Facebook), the EmailJS keys, the three student numbers (trained, enrolled, enrolling), mentors and testimonials. Contact details are real; stats, mentors and testimonials are still samples.
+2. **Contact form (EmailJS)**: paste your real `serviceId`, `templateId` and `publicKey` into `SITE.emailjs` in `js/site-data.js`. The forms call the EmailJS REST API (`https://api.emailjs.com/api/v1.0/email/send`) with these template params: `name`, `email`, `phone`, `subject` (the chosen course), `message`, `time` (IST). The email template is stored in the EmailJS dashboard (Email Templates > Contact Us).
+   - In the EmailJS dashboard, restrict the account to your live domain (Account > Security, allowed origins). Do not switch on the template's reCAPTCHA option unless a reCAPTCHA widget is also added to the forms, otherwise every send will be rejected. The browser-side rate limit (3 messages per 10 minutes, 30 s gap, 5 per session) can be bypassed, so the dashboard settings are the real protection.
+3. **`pricing.html`**: crash course prices are real. Career courses and one-month programs show "Fees on request"; add real fees if you want to publish them.
+4. **`contact.html`**: office hours (sample) and, if you want one, a street address.
+5. **Domain**: the site uses `https://www.techparadisehub.in` in its link-preview (og:image) and search-engine (JSON-LD) tags. If you serve it from a different address, update those URLs.
 6. **`privacy.html`**: have it reviewed for your business.
 
 Do not publish invented student numbers or testimonials. Use real ones only.
