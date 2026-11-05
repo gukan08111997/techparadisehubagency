@@ -61,19 +61,13 @@ p { margin: 0 0 1em; max-width: 62ch; }
 
 /* ---------- Page curtain / preloader ---------- */
 .curtain { position: fixed; inset: 0; z-index: 1000; display: none; pointer-events: none; }
-.js .curtain { display: grid; grid-template-columns: repeat(4, 1fr); animation: failsafe 0s 5s forwards; }
+.js .curtain { display: block; background: var(--bg); opacity: 1; visibility: visible; transition: opacity .4s ease, visibility 0s; animation: failsafe 0s 5s forwards; }
 @keyframes failsafe { to { visibility: hidden; } }
-.curtain i { display: block; transform: translateY(0); transition: transform .8s cubic-bezier(.76, 0, .24, 1); }
-.curtain i:nth-child(1) { background: var(--g-red); transition-delay: 0s; }
-.curtain i:nth-child(2) { background: var(--g-purple); transition-delay: .06s; }
-.curtain i:nth-child(3) { background: var(--g-green); transition-delay: .12s; }
-.curtain i:nth-child(4) { background: var(--g-blue); transition-delay: .18s; }
-.curtain.is-ready i { transform: translateY(-101%); }
+.curtain.is-ready { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s .4s; }
 /* Direct page loads skip the curtain (html.no-curtain is set in <head>); it only plays on in-site navigation */
 .no-curtain .curtain { display: none; }
-.curtain img { position: absolute; left: 50%; top: 50%; width: clamp(120px, 34vw, 190px); height: auto; aspect-ratio: 720 / 684; object-fit: contain; transform: translate(-50%, -50%); filter: drop-shadow(0 8px 30px rgba(0,0,0,.4)); animation: bloom 1.2s ease-in-out infinite alternate; }
-.curtain.is-ready img { opacity: 0; transition: opacity .25s; }
-@keyframes bloom { from { transform: translate(-50%, -50%) scale(.9) rotate(-6deg); } to { transform: translate(-50%, -50%) scale(1.05) rotate(6deg); } }
+.curtain img { position: absolute; left: 50%; top: 50%; width: clamp(120px, 34vw, 190px); height: auto; aspect-ratio: 720 / 684; object-fit: contain; transform: translate(-50%, -50%); animation: curtain-spin 1.2s linear infinite; animation-delay: var(--spin-phase, 0s); will-change: transform; backface-visibility: hidden; }
+@keyframes curtain-spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 
 /* ---------- Custom cursor ---------- */
 .cursor { position: fixed; left: 0; top: 0; width: 0; height: 0; z-index: 900; pointer-events: none; display: none; }

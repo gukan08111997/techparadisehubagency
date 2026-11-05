@@ -102,10 +102,9 @@
 
   function curtainOpen() {
     if (!curtain) return startIntro();
-    $$("i", curtain).forEach(function (i) { i.style.transform = ""; i.style.transition = ""; });
     curtain.style.animation = "none";
-    curtain.classList.add("is-ready");
-    setTimeout(startIntro, 450);
+    curtain.classList.add("is-ready"); // fade the dark layer + spinning logo out
+    setTimeout(startIntro, 300);
   }
   if (reduce || !curtain) {
     if (curtain) curtain.remove();
@@ -129,14 +128,14 @@
 
   function leaveTo(url) {
     try { sessionStorage.setItem("tph-nav", "1"); } catch (e) {}
+    // same clock-based phase as the next page's <head> script, so the spin continues without snapping back to 0deg
+    root.style.setProperty("--spin-phase", -(Date.now() % 1200) + "ms");
     root.classList.remove("no-curtain");
-    var strips = $$("i", curtain);
     curtain.style.animation = "none";
-    strips.forEach(function (i) { i.style.transition = "none"; i.style.transform = "translateY(101%)"; });
-    curtain.classList.remove("is-ready");
+    curtain.classList.add("is-ready"); // start invisible
     void curtain.offsetWidth;
-    strips.forEach(function (i) { i.style.transition = ""; i.style.transform = "translateY(0)"; });
-    setTimeout(function () { window.location.href = url; }, 750);
+    curtain.classList.remove("is-ready"); // fade the dark layer + spinning logo in
+    setTimeout(function () { window.location.href = url; }, 450);
   }
 
   /* ================= Delegated clicks: drawer + transitions ================= */
