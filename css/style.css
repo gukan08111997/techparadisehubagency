@@ -164,11 +164,6 @@ p { margin: 0 0 1em; max-width: 62ch; }
   .hero-mark { width: 92vw; right: -28vw; top: 30%; opacity: .55; }
   .hero h1 { max-width: 9ch; }
 }
-/* Laptops: slightly smaller page titles. Mobile (<1024px) and desktop (>=1440px) keep the original sizes. */
-@media (min-width: 1024px) and (max-width: 1439.98px) {
-  .hero h1 { font-size: clamp(3.6rem, 6.2vw, 5.6rem); }
-  .page-hero h1 { font-size: clamp(3rem, 5vw, 4.4rem); }
-}
 
 /* Split-letter headline */
 .split .word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
@@ -208,6 +203,9 @@ p { margin: 0 0 1em; max-width: 62ch; }
 .card h3 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
 .card ul { list-style: none; margin: .4rem 0 1.5rem; padding: 0; color: #D3CFE6; }
 .card li { padding: .3rem 0; border-bottom: 1px solid var(--line); font-size: .97rem; }
+/* Internship domains: 3 x 2 grid on wider screens, cards sized to their content */
+.cards--intern .card { min-height: 0; }
+@media (min-width: 860px) { .cards--intern { grid-template-columns: repeat(3, 1fr); } }
 .card .go { margin-top: auto; font-weight: 700; display: inline-flex; gap: .5rem; align-items: center; }
 .hue-red { --hue-g: var(--g-red); --glow: rgba(255,90,60,.28); --hue: var(--orange); }
 .hue-purple { --hue-g: var(--g-purple); --glow: rgba(190,40,230,.28); --hue: var(--magenta); }
@@ -416,3 +414,21 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--y
 .fab { background: #25D366; }
 .fab svg { width: 32px; height: 32px; }
 .channel .ico svg[fill="currentColor"] { width: 24px; height: 24px; }
+
+/* Small laptops and laptops (1024-1439px): smaller titles, headings and marquee text.
+   Mobile, tablet (<1024px) and desktop (>=1440px) keep the original sizes.
+   Kept at the end of the file so it overrides the component rules above. */
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+  .hero h1 { font-size: clamp(2.75rem, 4.34vw, 3.9rem); }
+  .page-hero h1 { font-size: clamp(2.2rem, 3.5vw, 3.08rem); }
+  h2 { font-size: clamp(2.5rem, 3.94vw, 3.1rem); }
+  .course-detail h2 { font-size: clamp(1.8rem, 2.8vw, 2.1rem); }
+  .faq-groups h2 { font-size: clamp(1.5rem, 2.38vw, 1.7rem); }
+  .prose h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.15rem; }
+  .card h3 { font-size: clamp(1.15rem, 1.82vw, 1.33rem); }
+  .pace-result h3 { font-size: clamp(1.35rem, 2.1vw, 1.47rem); }
+  .project h3 { font-size: clamp(1.1rem, 1.69vw, 1.2rem); }
+  .marquee-track span { font-size: clamp(2.7rem, 4.2vw, 3.22rem); }
+  .giant { font-size: clamp(2.5rem, 4vw, 3.68rem); }
+}
