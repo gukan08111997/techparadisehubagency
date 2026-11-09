@@ -569,13 +569,13 @@
       },
       phone: function (raw) {
         var v = clean(raw);
-        if (!v) return "";
+        if (!v) return "Enter your phone number.";
         if (/[^\d\s()+-]/.test(v)) return "Use digits only (you can add +, spaces or hyphens).";
         if (v.indexOf("+") > 0 || (v.match(/\+/g) || []).length > 1) return "Put + only at the start of the number.";
         var d = v.replace(/\D/g, "");
         var intl = v.charAt(0) === "+" && d.indexOf("91") !== 0;
         if (intl) { if (d.length < 10 || d.length > 15) return "Enter a valid international number with 10 to 15 digits."; return ""; }
-        if (!/^(?:91|0)?[6-9]\d{9}$/.test(d)) return "Enter a valid 10-digit mobile number (starting with 6, 7, 8 or 9), or leave it blank.";
+        if (!/^(?:91|0)?[6-9]\d{9}$/.test(d)) return "Enter a valid 10-digit mobile number (starting with 6, 7, 8 or 9).";
         return "";
       },
       course: function (raw) {
@@ -643,7 +643,7 @@
         template_params: {
           name: name,
           email: clean(f["email"].value).toLowerCase(),
-          phone: oneLine(f["phone"].value) || "Not provided",
+          phone: oneLine(f["phone"].value),
           subject: courseLabel || "General enquiry (not sure which course)",
           message: clean(f["message"].value),
           time: istTime()
