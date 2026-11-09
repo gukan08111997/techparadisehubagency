@@ -415,12 +415,13 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--y
 .fab svg { width: 32px; height: 32px; }
 .channel .ico svg[fill="currentColor"] { width: 24px; height: 24px; }
 
-/* Small laptops and laptops (1024-1439px): smaller titles, headings and marquee text.
-   Mobile, tablet (<1024px) and desktop (>=1440px) keep the original sizes.
+/* Small laptops and laptops (1024-1799px): smaller titles, headings and marquee text.
+   Covers common laptop widths: 1280, 1366, 1440, 1536 (1920x1080 at 125% Windows scaling), 1600, 1680, 1728.
+   Mobile, tablet (<1024px) and desktop (>=1800px, e.g. 1920px monitors) keep the original sizes.
    Kept at the end of the file so it overrides the component rules above. */
-@media (min-width: 1024px) and (max-width: 1439.98px) {
-  .hero h1 { font-size: clamp(2.75rem, 4.34vw, 3.9rem); }
-  .page-hero h1 { font-size: clamp(2.2rem, 3.5vw, 3.08rem); }
+@media (min-width: 1024px) and (max-width: 1799.98px) {
+  .hero h1 { font-size: clamp(2.75rem, 4.34vw, 5.04rem); }
+  .page-hero h1 { font-size: clamp(2.2rem, 3.5vw, 3.78rem); }
   h2 { font-size: clamp(2.5rem, 3.94vw, 3.1rem); }
   .course-detail h2 { font-size: clamp(1.8rem, 2.8vw, 2.1rem); }
   .faq-groups h2 { font-size: clamp(1.5rem, 2.38vw, 1.7rem); }
