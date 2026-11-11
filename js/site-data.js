@@ -1,6 +1,7 @@
 /* EDIT THIS FILE to change contact details, the EmailJS keys, student numbers, mentors and testimonials on every page.
-   Contact details below are real.
-   Stats, mentors and testimonials are still PLACEHOLDERS / SAMPLES: replace them with real information before you publish.
+   Contact details and stats below are real. Stats are also written into the HTML counters (index, about, stories)
+   so search engines see them: if you change a number here, update those three pages too.
+   Mentors and testimonials are still SAMPLES: replace them with real information before you publish.
    Do not publish invented numbers or testimonials. */
 window.SITE = {
   /* EmailJS (https://dashboard.emailjs.com). Paste your real IDs here; this is the only place they are used.

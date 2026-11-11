@@ -17,3 +17,10 @@ Do not publish invented student numbers or testimonials. Use real ones only.
 ## Pages
 
 index, courses, crash-courses, pricing, stories (testimonials and numbers), about (with internships), faq, contact, privacy, 404.
+
+## SEO
+
+- Every page has a canonical URL on `https://www.techparadisehub.in`; home links use `./` so Google treats `/` as the homepage (not `/index.html`).
+- `robots.txt` and `sitemap.xml` are at the site root. When you add or change a page, update its `<lastmod>` date in `sitemap.xml` (add new pages there too).
+- After deploying, in Google Search Console: submit `https://www.techparadisehub.in/sitemap.xml`, then use URL Inspection on `https://www.techparadisehub.in/` and click "Request indexing".
+- The student numbers are written into the HTML (index, about, stories) as well as `js/site-data.js`, so search engines see real numbers instead of 0. Keep them in sync.

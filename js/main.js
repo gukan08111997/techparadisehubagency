@@ -35,7 +35,11 @@
   });
   $$("[data-stat]").forEach(function (n) {
     var v = (SITE.stats || {})[n.getAttribute("data-stat")];
-    if (v != null) n.setAttribute("data-count", v);
+    if (v != null) {
+      n.setAttribute("data-count", v);
+      // keep the no-JS / crawler fallback text in sync with site-data.js
+      n.textContent = (parseFloat(v) || 0).toLocaleString("en-IN") + (n.getAttribute("data-suffix") || "");
+    }
   });
 
   $$("[data-render='mentors']").forEach(function (box) {
